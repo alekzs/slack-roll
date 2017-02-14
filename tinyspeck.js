@@ -168,7 +168,7 @@ class TinySpeck extends EventEmitter {
     // Display the Add to Slack button
     dispatcher.onGet("/", function(req, res) {
       res.writeHead(200, {'Content-Type': 'text/html'});
-      let html = '<h2>Example Slack Slash Command Handler</h2><br /><a id="add-to-slack" href="https://slack.com/apps/A0F82E8CA-slash-commands"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a><br><br><br><hr><p><a href="https://gomix.com/#!/remix/slash-command/a9e55c25-bf40-4162-b1b5-dc33047c0cdc"><img src="https://gomix.com/images/background-light/remix-on-gomix.svg"></a></p><p><a href="https://gomix.com/#!/project/slash-command">View Code</a></p>';
+      let html = '<h1>Slack Slash Command Handler</h1><p>This project demonstrates responding to Slash commands in Slack, using MongoDB for persistence.</p><p>To test it out:</p><br /><a id="add-to-slack" href="https://slack.com/apps/A0F82E8CA-slash-commands"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a><footer id="gWidget"></footer><script src="https://widget.gomix.me/widget.js"></script>';
       res.end(html);
     });     
     
