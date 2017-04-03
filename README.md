@@ -2,7 +2,7 @@
 
 This project demonstrates responding to Slash commands in Slack, using MongoDB for persistence.
 
-The app implements a simple counter, incrementing the counter each time the `/count` Slash Command is used. This app provides a basic template that you can [remix](https://gomix.com#!/remix/SlashCommands/a9e55c25-bf40-4162-b1b5-dc33047c0cdc) to create your own Slash Command handler.
+The app implements a simple counter, incrementing the counter each time the `/count` Slash Command is used. This app provides a basic template that you can [remix](https://glitch.com#!/remix/SlashCommands/a9e55c25-bf40-4162-b1b5-dc33047c0cdc) to create your own Slash Command handler.
 
 ![Screen Shot 2016-08-11 at 10.08.34](https://hyperdev.wpengine.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-11-at-10.08.34.png)
 
