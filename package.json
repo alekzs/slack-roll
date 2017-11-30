@@ -13,5 +13,6 @@
     "mongodb": "*",
     "synchronize": "^0.9.14",
     "httpdispatcher":"*"
-  }
+  },
+  "license": "MIT"
 }
