@@ -18,15 +18,25 @@ slack.on('/roll', payload => {
   let user_id = payload.user_id;
   let response_url = payload.response_url;
   
+  let items = payload.text.split(' ');
+  let formatted_items = [];
+  for (var i = 0; i < items.length; i++) {
+    formatted_items.push(`*${items[i]}*`);
+  }
+  var item = items[Math.floor(Math.random() * items.length)];
+  
   let message = {
     unfurl_links: true,
     response_type: "in_channel",
     channel: payload.channel_id,
     token: process.env.SLACK_TOKEN,
-    text: `${payload.user_name} rolled:`,
-    attachments: [{
-      text: "And here's an attachment!"
-    }]
+    text: `A roll was made between these options: ${formatted_items.join(" | ")}, and I rolled:`,
+    attachments: [
+        {
+            title: item,
+			      color: "#36a64f"
+        }
+    ]
   }
   
   slack.send(response_url, message).then(data => {
