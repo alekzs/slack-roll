@@ -17,9 +17,20 @@ slack.on('/roll', payload => {
   console.log("Received /count slash command from user " + payload.user_id);
   let user_id = payload.user_id;
   let response_url = payload.response_url;
-  console.log(payload);
-  slack.send(response_url, "koo").then(res => { // on success
-    console.log("Response sent to /count slash command");
+  
+  let message = {
+    unfurl_links: true,
+    response_type: "in_channel",
+    channel: payload.channel_id,
+    token: process.env.SLACK_TOKEN,
+    text: `${payload.user_name} rolled:`,
+    attachments: [{
+      text: "And here's an attachment!"
+    }]
+  }
+  
+  slack.send(response_url, message).then(data => {
+    // Success!
   }, reason => { // on failure
     console.log("An error occurred when responding to /count slash command: " + reason);
   });
