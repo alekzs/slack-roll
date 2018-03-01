@@ -13,11 +13,11 @@ var connected=false;
 // The `slack` functions like `on()` and `send()` are provided by `tinyspeck.js`. 
 //
 // Watch for /count slash command
-slack.on('/count', payload => {
+slack.on('/roll', payload => {
   console.log("Received /count slash command from user " + payload.user_id);
   let user_id = payload.user_id;
   let response_url = payload.response_url;
-  
+  console.log(payload);
   slack.send(response_url, "koo").then(res => { // on success
     console.log("Response sent to /count slash command");
   }, reason => { // on failure
