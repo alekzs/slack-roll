@@ -14,31 +14,39 @@ var connected=false;
 //
 // Watch for /count slash command
 slack.on('/roll', payload => {
-  console.log("Received /count slash command from user " + payload.user_id);
   let user_id = payload.user_id;
   let response_url = payload.response_url;
-  
+  let message = null;
   let items = payload.text.split(' ');
-  let formatted_items = [];
-  for (var i = 0; i < items.length; i++) {
-    formatted_items.push(`*${items[i]}*`);
-  }
-  var item = items[Math.floor(Math.random() * items.length)];
+  let valid_items = items.length > 1;
   
-  let message = {
-    unfurl_links: true,
-    response_type: "in_channel",
-    channel: payload.channel_id,
-    token: process.env.SLACK_TOKEN,
-    text: `A roll was made between these options: ${formatted_items.join(" | ")}, and I rolled:`,
-    attachments: [
-        {
-            title: item,
-			      color: "#36a64f"
-        }
-    ]
+  if (valid_items) {
+    let formatted_items = [];
+    for (var i = 0; i < items.length; i++) {
+      formatted_items.push(`*${items[i]}*`);
+    }
+    var item = items[Math.floor(Math.random() * items.length)];
+
+    message = {
+      unfurl_links: true,
+      response_type: "in_channel",
+      channel: payload.channel_id,
+      token: process.env.SLACK_TOKEN,
+      text: `A roll was made between these options: ${formatted_items.join(" | ")}, and I rolled:`,
+      attachments: [
+          {
+              title: item,
+              color: "#36a64f"
+          }
+      ]
+    }
+  } else {
+    message = {
+      channel: payload.channel_id,
+      token: process.env.SLACK_TOKEN,
+      text: `Invalid options. Please add at least two options separated by spaces, like so: \`/roll <option1> <option2> <option3> ...\``,
+    } 
   }
-  
   slack.send(response_url, message).then(data => {
     // Success!
   }, reason => { // on failure

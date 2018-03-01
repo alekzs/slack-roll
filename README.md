@@ -1,4 +1,4 @@
-# Slack Slash Command Response Handler
+# Random Roll slash command
 
 This project demonstrates responding to Slash commands in Slack, using MongoDB for persistence.
 
