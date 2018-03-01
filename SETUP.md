@@ -7,4 +7,4 @@ On the [Slash Commands](https://slack.com/apps/A0F82E8CA-slash-commands) page se
 ## Step 2: Copy the Command Token
 Copy the token value for the Slash Command into the `.env` file in your  project. You'll see an entry for SLACK_TOKEN. Paste the token against that variable name.
 
-That's all of the setup required to get the Slash Command working. To try it out, type the slash command `/roll <option1>, <option2>, <option3>`, and it'll output one of the options randomly chosen. 
+That's all of the setup required to get the Slash Command working. To try it out, type the slash command `/roll <title> | <option1>, <option2>, <option3>`, and it'll output one of the options randomly chosen. 

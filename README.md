@@ -1,4 +1,9 @@
-# Random Roll slash command
+# Slack Random Roll slash command
+
+## Purpose
+This was done just as a proof of concept to test the [Glitch](https://glitch.com/) hosting / editing service by remixing the `/count` command.
+
+## Usage
 
 The app implements a simple random roll command, that returns a random element from a list of options: `/roll [title? |] <option1>, <option2>, <option3>`. 
 

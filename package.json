@@ -1,7 +1,7 @@
 {
-  "name": "slack-onboarding-example",
+  "name": "slack-roll-command",
   "version": "1.0.0",
-  "description": "Example onboarding bot using Slack's Event API",
+  "description": "A slack command that randomly rolls an item from a list.",
   "scripts": {
     "start": "node index.js"
   },

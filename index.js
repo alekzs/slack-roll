@@ -17,7 +17,8 @@ slack.on('/roll', payload => {
   let user_id = payload.user_id;
   let response_url = payload.response_url;
   let message = null;
-  let payload_split = payload.text.split('|').reverse();
+  let delimiter = payload.text.match(/([|:])\s+/g);
+  let payload_split = payload.text.split(delimiter).reverse();
   let roll_title = "";
   if (payload_split.length > 1) {
     roll_title = payload_split.splice(1)[0].trim();
@@ -50,7 +51,7 @@ slack.on('/roll', payload => {
     message = {
       channel: payload.channel_id,
       token: process.env.SLACK_TOKEN,
-      text: `Invalid options. Please add at least two options separated by commas, like so: \`/roll [title?] | <option1>, <option2>, <option3> ...\``,
+      text: `Invalid options. Please add at least two options separated by commas, like so: \`/roll [title? |] <option1>, <option2>, <option3> ...\``,
     } 
   }
   slack.send(response_url, message).then(data => {
