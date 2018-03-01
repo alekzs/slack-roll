@@ -23,7 +23,6 @@ slack.on('/roll', payload => {
   if (payload_split.length > 1) {
     roll_title = payload_split.splice(1)[0].trim();
   }
-  console.log(payload_split, roll_title);
   let items = payload_split[0].split(',');
   let valid_items = items.length > 1;
   

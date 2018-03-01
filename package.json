@@ -13,5 +13,9 @@
     "synchronize": "^0.9.14",
     "httpdispatcher": "*"
   },
+  "repository" : {
+    "type" : "git", 
+    "url" : "https://github.com/alekzs/slack-roll.git"
+  }
   "license": "MIT"
 }
