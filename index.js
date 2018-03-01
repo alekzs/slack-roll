@@ -17,8 +17,13 @@ slack.on('/roll', payload => {
   let user_id = payload.user_id;
   let response_url = payload.response_url;
   let message = null;
-  let roll_title = payload.text.split('|')[0];
-  let items = payload.text.split(',');
+  let payload_split = payload.text.split('|');
+  let roll_title = "";
+  if (payload_split.length > 1) {
+    roll_title = payload_split.splice(1)[0];
+  }
+  console.log(payload_split, roll_title);
+  let items = payload_split[0].split(',');
   let valid_items = items.length > 1;
   
   if (valid_items) {
@@ -33,7 +38,7 @@ slack.on('/roll', payload => {
       response_type: "in_channel",
       channel: payload.channel_id,
       token: process.env.SLACK_TOKEN,
-      text: `A roll was made between these options: ${formatted_items.join(" | ")}, and I rolled:`,
+      text: `A roll${roll_title.length ? " titled " + roll_title : ""} was made between these options: ${formatted_items.join(" | ")}, and I rolled:`,
       attachments: [
           {
               title: item,
