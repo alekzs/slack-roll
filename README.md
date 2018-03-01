@@ -1,15 +1,15 @@
 # Random Roll slash command
 
-This project demonstrates responding to Slash commands in Slack, using MongoDB for persistence.
+The app implements a simple random roll command, that returns a random element from a list of options: `/roll <option1>, <option2>, <option3>`. 
 
-The app implements a simple counter, incrementing the counter each time the `/count` Slash Command is used. This app provides a basic template that you can [remix](https://glitch.com/edit/#!/remix/SlashCommands/a9e55c25-bf40-4162-b1b5-dc33047c0cdc) to create your own Slash Command handler.
+Example input: `/roll Nice restaurant, Nicer place, Fast food, Pizza, Kebab`
 
-![Screen Shot 2016-08-11 at 10.08.34](https://hyperdev.wpengine.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-11-at-10.08.34.png)
+![Example output](https://cdn.glitch.com/76ac8af4-4c4e-4601-ab31-b37eefe39d6b%2Froller.png?1519938339474)
 
 ## Getting Started
 To get started you need to:
 - Add a Slash Command configuration to your Slack integrations
 - Copy the generated Command Token
-- Add your database credentials along with the token to the `.env` file
+- Add your token to the `.env` file
 
 For more detailed setup instructions, see `setup.md`.

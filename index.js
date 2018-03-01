@@ -17,15 +17,16 @@ slack.on('/roll', payload => {
   let user_id = payload.user_id;
   let response_url = payload.response_url;
   let message = null;
-  let items = payload.text.split(' ');
+  let roll_title = payload.text.split('|')[0];
+  let items = payload.text.split(',');
   let valid_items = items.length > 1;
   
   if (valid_items) {
     let formatted_items = [];
     for (var i = 0; i < items.length; i++) {
-      formatted_items.push(`*${items[i]}*`);
+      formatted_items.push(`*${items[i].trim()}*`);
     }
-    var item = items[Math.floor(Math.random() * items.length)];
+    var item = items[Math.floor(Math.random() * items.length)].trim();
 
     message = {
       unfurl_links: true,
@@ -44,7 +45,7 @@ slack.on('/roll', payload => {
     message = {
       channel: payload.channel_id,
       token: process.env.SLACK_TOKEN,
-      text: `Invalid options. Please add at least two options separated by spaces, like so: \`/roll <option1> <option2> <option3> ...\``,
+      text: `Invalid options. Please add at least two options separated by commas, like so: \`/roll <option1>, <option2>, <option3> ...\``,
     } 
   }
   slack.send(response_url, message).then(data => {
